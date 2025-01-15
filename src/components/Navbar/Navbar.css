@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Flame-Bold';
+    src: url('/fonts/Flame.ttf') format('truetype'); 
+}
 .navbar {
     padding: 20px 0px;
     display: flex;
@@ -5,8 +9,9 @@
     align-items: center;
 }
 
-.navbar .logo {
-    width: 150px;
+.navbar h1 {
+    font-family: 'Flame-Bold'; 
+    color: orangered;
 }
 
 .navbar-menu {

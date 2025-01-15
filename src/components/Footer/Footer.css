@@ -52,3 +52,7 @@
         text-align: center;
     }
 }
+.footer h1 {
+    font-family: 'Flame-Bold'; 
+    color: orangered;
+}
