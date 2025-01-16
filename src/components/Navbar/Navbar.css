@@ -193,6 +193,17 @@ body {
 .mobile-only {
     display: none;
 }
+.mobile-only button{
+    font-family: 'Flame-Bold', sans-serif;
+    background: transparent;
+    font-size: 16px;
+    color: #49557E;
+    border: 1px solid #FF4C24;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
 @media (max-width: 768px) {
     .navbar {
@@ -216,6 +227,7 @@ body {
         align-items: center;
         gap: 10px;
     }
+
 
     .navbar-toggle {
         display: flex;
