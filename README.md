@@ -14,7 +14,7 @@ Welcome to the frontend of **Kevin's Fried Creations (KFC)**! This repository po
 ---
 ## Live Site
 
-Check out the live site here: [Kevin's Fried Creations](kfc-fe.vercel.app)
+Check out the live site here: [Kevin's Fried Creations](https://kfc-fe.vercel.app)
 
 ---
 ## Technologies Used
