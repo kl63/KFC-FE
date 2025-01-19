@@ -23,6 +23,8 @@ const Footer = () => {
                 <li>About us</li>
                 <li>Delivery</li>
                 <li>Privacy Policy</li>
+                <li><a href="http://localhost:5174">Admin</a></li>
+                {/* <li><a href="http://localhost:5174">Admin</a></li> */}
             </ul>
         </div>
         <div className="footer-content-right">

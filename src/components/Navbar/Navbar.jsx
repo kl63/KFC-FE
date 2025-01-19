@@ -1,8 +1,7 @@
-
 import React, { useContext, useState, useEffect } from 'react';
 import './Navbar.css';
 import { assets } from '../../assets/assets';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { StoreContext } from '../../Context/StoreContext';
 
 const Navbar = ({ setShowLogin }) => {
@@ -10,6 +9,7 @@ const Navbar = ({ setShowLogin }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -24,6 +24,28 @@ const Navbar = ({ setShowLogin }) => {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  const handleMenuClick = (hash) => {
+    if (location.pathname !== '/') {
+      navigate(`/#${hash}`);
+    } else {
+      window.location.hash = hash;
+    }
+    setMenu(hash);
+    closeMenu();
+  };
+
+  useEffect(() => {
+    const scrollToHash = () => {
+      if (location.hash) {
+        const element = document.getElementById(location.hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+    scrollToHash();
+  }, [location]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -51,9 +73,24 @@ const Navbar = ({ setShowLogin }) => {
       </div>
       <ul className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
         <Link to="/" onClick={() => { setMenu("home"); closeMenu(); }} className={`${menu === "home" ? "active" : ""}`}>Home</Link>
-        <a href="#explore-menu" onClick={() => { setMenu("menu"); closeMenu(); }} className={`${menu === "menu" ? "active" : ""}`}>Menu</a>
-        <a href="#app-download" onClick={() => { setMenu("mob-app"); closeMenu(); }} className={`${menu === "mob-app" ? "active" : ""}`}>Mobile App</a>
-        <a href="#footer" onClick={() => { setMenu("contact"); closeMenu(); }} className={`${menu === "contact" ? "active" : ""}`}>Contact Us</a>
+        <a
+          onClick={() => handleMenuClick('explore-menu')}
+          className={`${menu === "menu" ? "active" : ""}`}
+        >
+          Menu
+        </a>
+        <a
+          onClick={() => handleMenuClick('app-download')}
+          className={`${menu === "mob-app" ? "active" : ""}`}
+        >
+          Mobile App
+        </a>
+        <a
+          onClick={() => handleMenuClick('footer')}
+          className={`${menu === "contact" ? "active" : ""}`}
+        >
+          Contact Us
+        </a>
         <li className="mobile-only">
           <img src={assets.search_icon} alt="Search" />
         </li>
